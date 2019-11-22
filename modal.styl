@@ -1,0 +1,143 @@
+@import '~@dtwave/nemo-base/style/index.styl'
+@import 'mixins.styl'
+
+$prefix-cls = '%s-modal' % $nemo-prefix
+
+$wrap-pre = '%s-modal-wrap' % $nemo-prefix
+
+$confirm = '%s-modal-confirm' % $nemo-prefix
+
+.{$prefix-cls}
+  // reset-component()
+  // width 100%
+
+  &.hidden
+    visibility hidden
+
+  &.active
+    visibility visible
+
+  p
+    margin 0
+
+  .{$prefix-cls}-mask
+    fixed-full-screen()
+    z-index 1000
+    height 100%
+    background-color rgba(0,0,0,0.65)
+
+    &.fadeIn
+      animation fadeIn .3s ease-in
+
+    &.fadeOut
+      animation fadeOut .3s ease-out
+
+  .{$prefix-cls}-close
+    position absolute
+    right 0
+    top 0
+    z-index 10
+    padding 0
+    color rgba(0,0,0,0.45)
+    font-weight 700
+    text-decoration none
+    background transparent
+    border 0
+    outline 0
+    cursor pointer
+    transition color .3s
+    width 56px
+    height 55px
+    font-size 16px
+    font-style normal
+    text-align center
+    text-transform none
+    text-rendering auto
+  
+  .{$wrap-pre}
+    position fixed
+    left 50%
+    transform translate(-50%) scale(1) 
+    z-index 1000
+    width 520px
+    box-sizing border-box
+    color rgba(0,0,0,0.65)
+    font-size 14px
+    font-variant tabular-nums
+    line-height 1.5
+    list-style none
+    font-feature-settings 'tnum'
+    top 100px
+    background-color #fff
+    box-shadow 0 4px 12px rgba(0,0,0,0.15)
+    border-radius 4px
+
+    &.fadeIn
+      animation fadeIn .3s ease-in
+
+    &.fadeOut
+      animation fadeOut .3s ease-out
+    
+    .{$wrap-pre}-title
+      position relative
+      padding 16px 24px
+      padding-right 56px
+      min-height 22px
+      color rgba(0,0,0,0.65)
+      background #fff
+      border-bottom 1px solid #e8e8e8
+      border-radius 4px 4px 0 0
+
+    .{$wrap-pre}-content
+      padding 24px
+      font-size 14px
+      line-height 1.5
+      word-wrap break-word
+
+      .{$confirm}-body
+        .{$confirm}-title
+          flex-ac()
+          color rgba(0,0,0,0.85)
+          font-weight 500
+          font-size 16px
+          line-height 1.4
+
+        .{$confirm}-content
+          margin-top 8px
+          color rgba(0,0,0,0.65)
+          font-size 14px
+
+      .{$confirm}-btns
+        margin-top 24px
+        text-align right
+
+    .{$wrap-pre}-footer
+      padding 10px 16px
+      text-align right
+      border-top 1px solid #e8e8e8
+      border-radius 0 0 4px 4px
+
+  &.{$prefix-cls}-centered
+    .{$wrap-pre}
+      top 50%
+      transform translate(-50%, -50%)
+
+@keyframes fadeIn {
+  from {
+    opacity 0
+  }
+  to {
+    opacity 1
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity 1
+  }
+  to {
+    opacity 0
+  }
+}
+    
+    
